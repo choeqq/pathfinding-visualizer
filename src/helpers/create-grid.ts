@@ -6,10 +6,10 @@ import {
   FINISH_NODE_ROW,
   FINISH_NODE_COL,
 } from "../constants/grid-size";
-import { CreateNodeTypes } from "./types";
-import { Node } from "../types/node";
+import { CreateNodeTypes } from "../types/create-grid.type";
+import { NodeTypes } from "../types/node.type";
 
-const createNode = ({ row, col }: CreateNodeTypes): Node => {
+const createNode = ({ row, col }: CreateNodeTypes): NodeTypes => {
   return {
     col,
     row,
