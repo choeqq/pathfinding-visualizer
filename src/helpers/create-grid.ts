@@ -19,6 +19,9 @@ const createNode = ({ row, col }: CreateNodeTypes): NodeTypes => {
     isVisited: false,
     isWall: false,
     previousNode: null,
+    onMouseDown: () => {},
+    onMouseEnter: () => {},
+    onMouseUp: () => {},
   };
 };
 

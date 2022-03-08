@@ -1,7 +1,13 @@
 import React from "react";
+import Pathfinder from "./components/Pathfinder/Pathfinder";
+import { Wrapper } from "./styles/Wrapper";
 
 function App() {
-  return <div className="App">HEELOOO</div>;
+  return (
+    <Wrapper>
+      <Pathfinder />
+    </Wrapper>
+  );
 }
 
 export default App;

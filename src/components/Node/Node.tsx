@@ -1,8 +1,8 @@
 import React from "react";
-import { StyledNode } from "../styles/Node";
-import { NodeUITypes } from "../types/node.type";
+import { StyledNode } from "./NodeStyles";
+import { NodeTypes } from "../../types/node.type";
 
-const Node: React.FC<NodeUITypes> = ({
+const Node: React.FC<NodeTypes> = ({
   col,
   row,
   isFinish,
@@ -15,6 +15,8 @@ const Node: React.FC<NodeUITypes> = ({
   return (
     <StyledNode
       id={`node-${row}-${col}`}
+      row={row}
+      col={col}
       onMouseDown={() => onMouseDown(row, col)}
       onMouseEnter={() => onMouseEnter(row, col)}
       onMouseUp={() => onMouseUp()}

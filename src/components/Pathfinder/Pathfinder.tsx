@@ -1,20 +1,32 @@
 import React, { useState } from "react";
-import { NodeTypes } from "../types/node.type";
-import Node from "./Node";
-import { createInitialGrid } from "../helpers/create-grid";
+import { NodeTypes } from "../../types/node.type";
+import Node from "../Node/Node";
+import { createInitialGrid } from "../../helpers/create-grid";
+import { toggleWalls } from "../../helpers/toggle-walls";
+import { GridContainer } from "./PathfinderStyles";
 
 const Pathfinder: React.FC = () => {
   const [grid, setGrid] = useState<NodeTypes[][]>(() => createInitialGrid());
   const [mouseIsPressed, setMouseIsPressed] = useState<boolean>(false);
 
-  const handleMouseDown = (row: number, col: number) => {};
-  const handleMouseEnter = (row: number, col: number) => {};
-  const handleMouseUp = () => {};
+  const handleMouseDown = (row: number, col: number) => {
+    const newGrid = toggleWalls(grid, row, col);
+    setGrid(newGrid);
+    setMouseIsPressed(true);
+  };
+  const handleMouseEnter = (row: number, col: number) => {
+    if (!mouseIsPressed) return;
+    const newGrid = toggleWalls(grid, row, col);
+    setGrid(newGrid);
+  };
+  const handleMouseUp = () => {
+    setMouseIsPressed(false);
+  };
 
   return (
     <>
       <button>Visualize Dijkstra's</button>
-      <div>
+      <GridContainer>
         {grid.map((row, rowIdx) => {
           return (
             <div key={rowIdx}>
@@ -41,7 +53,7 @@ const Pathfinder: React.FC = () => {
             </div>
           );
         })}
-      </div>
+      </GridContainer>
     </>
   );
 };
