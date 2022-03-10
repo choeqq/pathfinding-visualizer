@@ -6,10 +6,9 @@ import {
   FINISH_NODE_ROW,
   FINISH_NODE_COL,
 } from "../constants/grid-size";
-import { CreateNodeTypes } from "../types/create-grid.type";
 import { NodeTypes } from "../types/node.type";
 
-const createNode = ({ row, col }: CreateNodeTypes): NodeTypes => {
+const createNode = (col: number, row: number): NodeTypes => {
   return {
     col,
     row,
@@ -28,11 +27,11 @@ const createNode = ({ row, col }: CreateNodeTypes): NodeTypes => {
 export const createInitialGrid = () => {
   const grid = [];
   for (let row = 0; row < ROWS; row++) {
-    let currRow = [];
+    const currentRow = [];
     for (let col = 0; col < COLS; col++) {
-      currRow.push(createNode({ col, row }));
+      currentRow.push(createNode(row, row));
     }
-    grid.push(currRow);
+    grid.push(currentRow);
   }
   return grid;
 };

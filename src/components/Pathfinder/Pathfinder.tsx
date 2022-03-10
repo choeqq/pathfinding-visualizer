@@ -31,12 +31,12 @@ const Pathfinder: React.FC = () => {
           return (
             <div key={rowIdx}>
               {row.map((node, nodeIdx) => {
-                const { row, col, isFinish, isStart, isWall } = node;
+                const { col, row, isFinish, isStart, isWall } = node;
                 return (
                   <Node
                     key={nodeIdx}
-                    row={row}
                     col={col}
+                    row={row}
                     isFinish={isFinish}
                     isStart={isStart}
                     isWall={isWall}
