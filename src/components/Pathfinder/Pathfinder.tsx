@@ -4,9 +4,11 @@ import Node from "../Node/Node";
 import { createInitialGrid } from "../../helpers/create-grid";
 import { toggleWalls } from "../../helpers/toggle-walls";
 import { GridContainer } from "./PathfinderStyles";
+import visualizeDijkstra from "../../helpers/visualize-dijkstra";
 
 const Pathfinder: React.FC = () => {
   const [grid, setGrid] = useState<NodeTypes[][]>(() => createInitialGrid());
+  console.log(grid);
   const [mouseIsPressed, setMouseIsPressed] = useState<boolean>(false);
 
   const handleMouseDown = (row: number, col: number) => {
@@ -14,18 +16,22 @@ const Pathfinder: React.FC = () => {
     setGrid(newGrid);
     setMouseIsPressed(true);
   };
+
   const handleMouseEnter = (row: number, col: number) => {
     if (!mouseIsPressed) return;
     const newGrid = toggleWalls(grid, row, col);
     setGrid(newGrid);
   };
+
   const handleMouseUp = () => {
     setMouseIsPressed(false);
   };
 
   return (
     <>
-      <button>Visualize Dijkstra's</button>
+      <button onClick={() => visualizeDijkstra(grid)}>
+        Visualize Dijkstra's
+      </button>
       <GridContainer>
         {grid.map((row, rowIdx) => {
           return (

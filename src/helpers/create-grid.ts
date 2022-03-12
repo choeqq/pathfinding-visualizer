@@ -29,7 +29,7 @@ export const createInitialGrid = () => {
   for (let row = 0; row < ROWS; row++) {
     const currentRow = [];
     for (let col = 0; col < COLS; col++) {
-      currentRow.push(createNode(row, row));
+      currentRow.push(createNode(col, row));
     }
     grid.push(currentRow);
   }
