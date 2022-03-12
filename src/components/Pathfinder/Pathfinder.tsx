@@ -8,7 +8,6 @@ import visualizeDijkstra from "../../helpers/visualize-dijkstra";
 
 const Pathfinder: React.FC = () => {
   const [grid, setGrid] = useState<NodeTypes[][]>(() => createInitialGrid());
-  console.log(grid);
   const [mouseIsPressed, setMouseIsPressed] = useState<boolean>(false);
 
   const handleMouseDown = (row: number, col: number) => {
@@ -35,9 +34,10 @@ const Pathfinder: React.FC = () => {
       <GridContainer>
         {grid.map((row, rowIdx) => {
           return (
-            <div key={rowIdx}>
+            <div key={rowIdx} style={{ background: "red" }}>
               {row.map((node, nodeIdx) => {
                 const { col, row, isFinish, isStart, isWall } = node;
+                console.log(row, col);
                 return (
                   <Node
                     key={nodeIdx}
