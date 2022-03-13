@@ -11,9 +11,12 @@ const Node: React.FC<NodeTypes> = ({
   onMouseDown,
   onMouseEnter,
   onMouseUp,
+  distance,
+  cleared,
 }) => {
   return (
     <StyledNode
+      distance={distance}
       id={`node-${row}-${col}`}
       row={row}
       col={col}
@@ -23,6 +26,7 @@ const Node: React.FC<NodeTypes> = ({
       isFinish={isFinish}
       isStart={isStart}
       isWall={isWall}
+      cleared={cleared}
     />
   );
 };

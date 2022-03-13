@@ -4,11 +4,12 @@ export interface NodeTypes {
   isStart?: boolean;
   isFinish?: boolean;
   isWall?: boolean;
-  distance?: number;
+  distance: number;
   isVisited?: boolean;
   previousNode?: Node | null;
   onMouseDown: (_1: number, _2: number) => void;
   onMouseEnter: (_1: number, _2: number) => void;
   onMouseUp: () => void;
   id?: string;
+  cleared?: boolean;
 }

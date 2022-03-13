@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NodeTypes } from "../../types/node.type";
 import Node from "../Node/Node";
 import { createInitialGrid } from "../../helpers/create-grid";
@@ -8,7 +8,12 @@ import visualizeDijkstra from "../../helpers/visualize-dijkstra";
 
 const Pathfinder: React.FC = () => {
   const [grid, setGrid] = useState<NodeTypes[][]>(() => createInitialGrid());
+  const [cleared, setCleared] = useState(false);
   const [mouseIsPressed, setMouseIsPressed] = useState<boolean>(false);
+
+  useEffect(() => {
+    setCleared(false);
+  }, []);
 
   const handleMouseDown = (row: number, col: number) => {
     const newGrid = toggleWalls(grid, row, col);
@@ -28,6 +33,7 @@ const Pathfinder: React.FC = () => {
 
   const clearGrid = () => {
     setGrid(() => createInitialGrid());
+    setCleared(true);
   };
 
   return (
@@ -46,6 +52,7 @@ const Pathfinder: React.FC = () => {
                   <Node
                     key={nodeIdx}
                     col={col}
+                    distance={0}
                     isFinish={isFinish}
                     isStart={isStart}
                     isWall={isWall}
@@ -53,6 +60,7 @@ const Pathfinder: React.FC = () => {
                     onMouseEnter={(row, col) => handleMouseEnter(row, col)}
                     onMouseUp={() => handleMouseUp()}
                     row={row}
+                    cleared={cleared}
                   />
                 );
               })}
