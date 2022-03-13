@@ -42,7 +42,12 @@ const shortestPathAnimation = keyframes`
 export const GridContainer = styled.div`
   margin: 100px 0 0;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+`;
+
+export const Container = styled.div`
+  display: flex;
 
   .node {
     width: 25px;

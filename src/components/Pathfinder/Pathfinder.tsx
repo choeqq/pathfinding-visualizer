@@ -3,7 +3,7 @@ import { NodeTypes } from "../../types/node.type";
 import Node from "../Node/Node";
 import { createInitialGrid } from "../../helpers/create-grid";
 import { toggleWalls } from "../../helpers/toggle-walls";
-import { GridContainer } from "./PathfinderStyles";
+import { Container, GridContainer } from "./PathfinderStyles";
 import visualizeDijkstra from "../../helpers/visualize-dijkstra";
 
 const Pathfinder: React.FC = () => {
@@ -26,37 +26,37 @@ const Pathfinder: React.FC = () => {
     setMouseIsPressed(false);
   };
 
+  const clearGrid = () => {
+    setGrid(() => createInitialGrid());
+  };
+
   return (
     <>
       <button onClick={() => visualizeDijkstra(grid)}>
         Visualize Dijkstra's
       </button>
+      <button onClick={() => clearGrid()}>Clear Grid</button>
       <GridContainer>
         {grid.map((row, rowIdx) => {
           return (
-            <div key={rowIdx} style={{ background: "red" }}>
+            <Container key={rowIdx}>
               {row.map((node, nodeIdx) => {
-                const { col, row, isFinish, isStart, isWall } = node;
-                console.log(row, col);
+                const { row, col, isFinish, isStart, isWall } = node;
                 return (
                   <Node
                     key={nodeIdx}
                     col={col}
-                    row={row}
                     isFinish={isFinish}
                     isStart={isStart}
                     isWall={isWall}
-                    onMouseDown={(row: number, col: number) =>
-                      handleMouseDown(row, col)
-                    }
-                    onMouseEnter={(row: number, col: number) =>
-                      handleMouseEnter(row, col)
-                    }
+                    onMouseDown={(row, col) => handleMouseDown(row, col)}
+                    onMouseEnter={(row, col) => handleMouseEnter(row, col)}
                     onMouseUp={() => handleMouseUp()}
+                    row={row}
                   />
                 );
               })}
-            </div>
+            </Container>
           );
         })}
       </GridContainer>
