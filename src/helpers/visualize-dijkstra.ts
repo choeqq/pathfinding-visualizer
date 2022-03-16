@@ -1,4 +1,6 @@
-import dijkstra, { getNodesInShortestPathOrder } from "../algorithms/dijkstras";
+import dijkstra, {
+  getNodesInShortestPathOrder,
+} from "../algorithms/dijkstra/dijkstras";
 import {
   START_NODE_ROW,
   START_NODE_COL,
