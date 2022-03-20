@@ -5,6 +5,7 @@ import { createInitialGrid } from "../../helpers/create-grid";
 import { toggleWalls } from "../../helpers/toggle-walls";
 import { Container, GridContainer } from "./PathfinderStyles";
 import visualizeDijkstra from "../../helpers/visualize-dijkstra";
+import Graph from "../../algorithms/dfs-bfs/DFS-BFS";
 
 const Pathfinder: React.FC = () => {
   const [grid, setGrid] = useState<NodeTypes[][]>(() => createInitialGrid());
@@ -41,6 +42,8 @@ const Pathfinder: React.FC = () => {
       <button onClick={() => visualizeDijkstra(grid)}>
         Visualize Dijkstra's
       </button>
+      <button onClick={() => {}}>DFS</button>
+      <button onClick={() => {}}>BFS</button>
       <button onClick={() => clearGrid()}>Clear Grid</button>
       <GridContainer>
         {grid.map((row, rowIdx) => {
