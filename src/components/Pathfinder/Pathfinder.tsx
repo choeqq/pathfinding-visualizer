@@ -12,10 +12,6 @@ const Pathfinder: React.FC = () => {
   const [cleared, setCleared] = useState(false);
   const [mouseIsPressed, setMouseIsPressed] = useState<boolean>(false);
 
-  useEffect(() => {
-    setCleared(false);
-  }, []);
-
   const handleMouseDown = (row: number, col: number) => {
     const newGrid = toggleWalls(grid, row, col);
     setGrid(newGrid);
@@ -33,6 +29,12 @@ const Pathfinder: React.FC = () => {
   };
 
   const clearGrid = () => {
+    grid.forEach((row) => {
+      row.forEach((node) => {
+        document.getElementById(`node-${node.row}-${node.col}`)!.className =
+          "node";
+      });
+    });
     setGrid(() => createInitialGrid());
     setCleared(true);
   };
