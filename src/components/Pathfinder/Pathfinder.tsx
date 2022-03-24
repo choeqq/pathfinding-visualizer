@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { NodeTypes } from "../../types/node.type";
 import Node from "../Node/Node";
-import { createInitialGrid } from "../../helpers/create-grid";
+import { addNeighbors, createInitialGrid } from "../../helpers/create-grid";
 import { toggleWalls } from "../../helpers/toggle-walls";
 import { Container, GridContainer } from "./PathfinderStyles";
 import visualizeDijkstra from "../../helpers/visualize-dijkstra";
-import Graph from "../../algorithms/dfs-bfs/DFS-BFS";
+import visualizeAstar from "../../helpers/visualizeAstar";
 
 const Pathfinder: React.FC = () => {
   const [grid, setGrid] = useState<NodeTypes[][]>(() => createInitialGrid());
   const [cleared, setCleared] = useState(false);
   const [mouseIsPressed, setMouseIsPressed] = useState<boolean>(false);
+
+  addNeighbors(grid);
 
   const handleMouseDown = (row: number, col: number) => {
     const newGrid = toggleWalls(grid, row, col);
@@ -46,7 +48,7 @@ const Pathfinder: React.FC = () => {
       </button>
       <button onClick={() => {}}>DFS</button>
       <button onClick={() => {}}>BFS</button>
-      <button onClick={() => {}}>Astar</button>
+      <button onClick={() => visualizeAstar(grid)}>Astar</button>
       <button onClick={() => clearGrid()}>Clear Grid</button>
       <GridContainer>
         {grid.map((row, rowIdx) => {
@@ -65,6 +67,7 @@ const Pathfinder: React.FC = () => {
                     onMouseDown={(row, col) => handleMouseDown(row, col)}
                     onMouseEnter={(row, col) => handleMouseEnter(row, col)}
                     onMouseUp={() => handleMouseUp()}
+                    addNeighbors={() => {}}
                     row={row}
                     cleared={cleared}
                   />
