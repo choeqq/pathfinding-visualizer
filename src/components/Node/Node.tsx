@@ -23,6 +23,7 @@ const Node: React.FC<NodeTypes> = ({
       onMouseDown={() => onMouseDown(row, col)}
       onMouseEnter={() => onMouseEnter(row, col)}
       onMouseUp={() => onMouseUp()}
+      addNeighbors={() => {}}
       isFinish={isFinish}
       isStart={isStart}
       isWall={isWall}
