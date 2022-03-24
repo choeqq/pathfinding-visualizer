@@ -3,18 +3,20 @@ import { NodeTypes } from "../../types/node.type";
 export default function aStar(startNode: NodeTypes, endNode: NodeTypes) {
   let openSet = [];
   let closedSet = [];
-  let path = [];
+  let path: NodeTypes[] = [];
+  let visitedNodes: NodeTypes[] = [];
 
   openSet.push(startNode);
 
   while (openSet.length > 0) {
     let leastIndex = 0;
     for (let i = 0; i < openSet.length; i++) {
-      if (openSet[i].f < openSet[leastIndex].f) {
+      if (openSet[i].f! < openSet[leastIndex].f!) {
         leastIndex = i;
       }
     }
-    let current = openSet[leastIndex];
+    let current: NodeTypes = openSet[leastIndex];
+    visitedNodes.push(current);
 
     if (current === endNode) {
       let temp = current;
@@ -23,20 +25,20 @@ export default function aStar(startNode: NodeTypes, endNode: NodeTypes) {
         path.push(temp.previous);
         temp = temp.previous;
       }
-      return path;
+      return { path, visitedNodes };
     }
 
     openSet = openSet.filter((e) => e !== current);
     closedSet.push(current);
 
     let neighbors = current.neighbors;
-    for (let i = 0; i < neighbors.length; i++) {
-      let neighbor = neighbors[i];
+    for (let i = 0; i < neighbors!.length; i++) {
+      let neighbor = neighbors![i];
       if (!closedSet.includes(neighbor)) {
-        let tempG = current.g + 1;
+        let tempG = current.g! + 1;
         let newPath = false;
         if (openSet.includes(neighbor)) {
-          if (tempG < neighbor.g) {
+          if (tempG < neighbor.g!) {
             neighbor.g = tempG;
             newPath = true;
           }
@@ -47,17 +49,19 @@ export default function aStar(startNode: NodeTypes, endNode: NodeTypes) {
         }
 
         if (newPath) {
-          neighbor.h = heuristic(neighbor, endNode);
-          neighbor.f = neighbor.g + neighbor.f;
-          neighbor.previous = current;
+          if (neighbor.g && neighbor.f) {
+            neighbor.h = heuristic(neighbor, endNode);
+            neighbor.f = neighbor.g + neighbor.f;
+            neighbor.previous = current;
+          }
         }
       }
     }
   }
-  return { path, error: "No path found :(" };
+  return { path, visitedNodes, error: "No path found :(" };
 }
 
-function heuristic(a, b) {
-  let d = Math.abs(a.x - a.y) + Math.abs(b.x - b.y);
+function heuristic(a: NodeTypes, b: NodeTypes) {
+  let d = Math.abs(a.col - a.row) + Math.abs(b.col - b.row);
   return d;
 }

@@ -6,10 +6,16 @@ export interface NodeTypes {
   isWall?: boolean;
   distance: number;
   isVisited?: boolean;
-  previousNode?: Node | null;
+  previousNode?: NodeTypes | null;
   onMouseDown: (_1: number, _2: number) => void;
   onMouseEnter: (_1: number, _2: number) => void;
   onMouseUp: () => void;
   id?: string;
   cleared?: boolean;
+  g?: number;
+  f?: number;
+  h?: number;
+  neighbors?: NodeTypes[];
+  previous?: null | NodeTypes;
+  addNeighbors?: (_1: NodeTypes[][]) => void;
 }

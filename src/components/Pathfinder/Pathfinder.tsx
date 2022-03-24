@@ -46,6 +46,7 @@ const Pathfinder: React.FC = () => {
       </button>
       <button onClick={() => {}}>DFS</button>
       <button onClick={() => {}}>BFS</button>
+      <button onClick={() => {}}>Astar</button>
       <button onClick={() => clearGrid()}>Clear Grid</button>
       <GridContainer>
         {grid.map((row, rowIdx) => {

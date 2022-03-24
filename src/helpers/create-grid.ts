@@ -21,6 +21,16 @@ const createNode = (col: number, row: number): NodeTypes => {
     onMouseDown: () => {},
     onMouseEnter: () => {},
     onMouseUp: () => {},
+    g: 0,
+    f: 0,
+    h: 0,
+    neighbors: [],
+    addNeighbors: function (grid) {
+      if (col > 0) this.neighbors!.push(grid[col - 1][row]);
+      if (col < ROWS - 1) this.neighbors!.push(grid[col + 1][row]);
+      if (row > 0) this.neighbors!.push(grid[col][row - 1]);
+      if (row < COLS - 1) this.neighbors!.push(grid[col][row + 1]);
+    },
   };
 };
 
