@@ -26,10 +26,10 @@ const createNode = (col: number, row: number): NodeTypes => {
     h: 0,
     neighbors: [],
     addNeighbors: function (grid) {
-      if (col > 0) this.neighbors!.push(grid[col - 1][row]);
-      if (col < COLS - 1) this.neighbors!.push(grid[col + 1][row]);
-      if (row > 0) this.neighbors!.push(grid[col][row - 1]);
-      if (row < ROWS - 1) this.neighbors!.push(grid[col][row + 1]);
+      if (col > 0) this.neighbors?.push(grid[col - 1][row]);
+      if (col < COLS - 1) this.neighbors?.push(grid[col + 1][row]);
+      if (row > 0) this.neighbors?.push(grid[col][row - 1]);
+      if (row < ROWS - 1) this.neighbors?.push(grid[col][row + 1]);
     },
   };
 };
