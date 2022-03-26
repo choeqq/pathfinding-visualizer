@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NodeTypes } from "../../types/node.type";
 import Node from "../Node/Node";
-import { addNeighbors, createInitialGrid } from "../../helpers/create-grid";
+import { createInitialGrid } from "../../helpers/create-grid";
 import { toggleWalls } from "../../helpers/toggle-walls";
 import { Container, GridContainer } from "./PathfinderStyles";
 import visualizeDijkstra from "../../helpers/visualize-dijkstra";
@@ -11,8 +11,6 @@ const Pathfinder: React.FC = () => {
   const [grid, setGrid] = useState<NodeTypes[][]>(() => createInitialGrid());
   const [cleared, setCleared] = useState(false);
   const [mouseIsPressed, setMouseIsPressed] = useState<boolean>(false);
-
-  addNeighbors(grid);
 
   const handleMouseDown = (row: number, col: number) => {
     const newGrid = toggleWalls(grid, row, col);
