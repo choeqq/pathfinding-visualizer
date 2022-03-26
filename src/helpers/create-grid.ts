@@ -25,7 +25,7 @@ const createNode = (col: number, row: number): NodeTypes => {
     f: 0,
     h: 0,
     neighbors: [],
-    addNeighbors: function (grid) {
+    addNeighbors: function (grid: NodeTypes[][]) {
       if (this.neighbors) {
         if (col > 0) this.neighbors?.push(grid[col - 1][row]);
         if (col < COLS - 1) this.neighbors?.push(grid[col + 1][row]);
@@ -36,10 +36,10 @@ const createNode = (col: number, row: number): NodeTypes => {
   };
 };
 
-export const addNeighbors = (grid: NodeTypes[][]) => {
+const addNeighbors = (grid: NodeTypes[][]) => {
   for (let i = 0; i < ROWS; i++) {
     for (let j = 0; j < COLS; j++) {
-      grid[i][j].addNeighbors!(grid);
+      grid[i][j].addNeighbors?.(grid);
     }
   }
 };

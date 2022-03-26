@@ -16,6 +16,6 @@ export interface NodeTypes {
   f?: number;
   h?: number;
   neighbors?: NodeTypes[];
-  previous?: null | NodeTypes;
+  previous?: NodeTypes;
   addNeighbors: (_1: NodeTypes[][]) => void;
 }
