@@ -1,11 +1,10 @@
+import { ROWS, COLS } from "../constants/grid-size";
 import {
-  ROWS,
-  COLS,
-  START_NODE_COL,
   START_NODE_ROW,
+  START_NODE_COL,
   FINISH_NODE_ROW,
   FINISH_NODE_COL,
-} from "../constants/grid-size";
+} from "../constants/grid-start-finish";
 import { NodeTypes } from "../types/node.type";
 
 const createNode = (col: number, row: number): NodeTypes => {

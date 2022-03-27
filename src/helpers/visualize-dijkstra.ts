@@ -6,7 +6,7 @@ import {
   START_NODE_COL,
   FINISH_NODE_COL,
   FINISH_NODE_ROW,
-} from "../constants/grid-size";
+} from "../constants/grid-start-finish";
 import { NodeTypes } from "../types/node.type";
 import { animateAlgorithm } from "./visualization-helpers";
 

@@ -4,7 +4,7 @@ import {
   START_NODE_ROW,
   FINISH_NODE_ROW,
   FINISH_NODE_COL,
-} from "../constants/grid-size";
+} from "../constants/grid-start-finish";
 import aStar from "../algorithms/aStar/aStar";
 import { animateAlgorithm } from "./visualization-helpers";
 
