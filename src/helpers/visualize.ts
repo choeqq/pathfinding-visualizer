@@ -31,6 +31,7 @@ export const visualize = (
       case "DFS":
         visitedNodesInOrder = Graph.dfs(grid, startNode, finishNode);
         break;
+      // should never get there :)
       default:
         break;
     }
