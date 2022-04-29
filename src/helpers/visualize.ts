@@ -31,6 +31,8 @@ export const visualize = (
       case "DFS":
         visitedNodesInOrder = Graph.dfs(grid, startNode, finishNode);
         break;
+      case "GreedySearch":
+        visitedNodesInOrder = greedySea;
       // should never get there :)
       default:
         break;
